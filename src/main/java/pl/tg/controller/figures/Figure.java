@@ -1,4 +1,4 @@
-package pl.tg.figures;
+package pl.tg.controller.figures;
 
 public class Figure {
 
