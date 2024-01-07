@@ -5,6 +5,7 @@ import pl.tg.gui.PatchWorkColors;
 import pl.tg.processor.Processor;
 import pl.tg.gui.GUI;
 
+import java.awt.*;
 import java.util.Scanner;
 
 public class GameController {
@@ -13,6 +14,7 @@ public class GameController {
     private Processor processor;
     private GUI GUI;
     private String move;
+    private FigureColors moveColor = FigureColors.WHITE;
 
     public GameController(Processor processor, GUI GUI) {
         this.processor = processor;
@@ -63,6 +65,7 @@ public class GameController {
         startPosition();
         GUI.displayPatchWork(patchWork);
         makeMove();
+        System.out.println(patchWork[7][4].possibleMovesArray(patchWork,7,4)[0].x);
         while (!move.equals("q")){
             GUI.displayPatchWork(patchWork);
             makeMove();
@@ -73,7 +76,9 @@ public class GameController {
 
     private void makeMove(){
         move = GUI.sendInfo();
-        System.out.println(move);
+        Point[] moves = processor.translateNotation(move,patchWork,moveColor);
+        System.out.println(moves[0].x + moves[0].y + moves[1].x + moves[1].y + patchWork[moves[0].x][moves[0].y].getSymbol());
+        moveColor = moveColor.equals(FigureColors.WHITE) ? FigureColors.BLACK: FigureColors.WHITE;
     }
 
 

@@ -1,5 +1,7 @@
 package pl.tg.controller.figures;
 
+import java.awt.*;
+
 public class Figure {
 
     private FigureColors colorFigure;
@@ -18,5 +20,9 @@ public class Figure {
     }
     public FigureColors getColorFigure(){
         return colorFigure;
+    }
+
+    public Point[] possibleMovesArray(Figure[][] patchwork, int x, int y){
+        return null;
     }
 }
