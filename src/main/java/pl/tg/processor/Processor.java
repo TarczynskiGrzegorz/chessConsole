@@ -63,13 +63,13 @@ public class Processor {
                 columnNumber = 7;
                 break;
             default:
-                columnNumber = 1;
+                columnNumber = 10;
         }
         return columnNumber;
     }
 
     private int getRowForPawn(FigureColors color, char destinationRow) {
-        int result = Integer.parseInt(String.valueOf(destinationRow));
+        int result = Integer.parseInt(String.valueOf(destinationRow)) -1;
         if(color.equals(FigureColors.WHITE)){
             result--;
         }else{

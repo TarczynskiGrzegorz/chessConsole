@@ -65,7 +65,7 @@ public class GameController {
         startPosition();
         GUI.displayPatchWork(patchWork);
         makeMove();
-        System.out.println(patchWork[7][4].possibleMovesArray(patchWork,7,4)[0].x);
+//        System.out.println(patchWork[7][4].possibleMovesArray(patchWork,7,4)[0].x);
         while (!move.equals("q")){
             GUI.displayPatchWork(patchWork);
             makeMove();
@@ -76,9 +76,11 @@ public class GameController {
 
     private void makeMove(){
         move = GUI.sendInfo();
+        System.out.println(move);
         Point[] moves = processor.translateNotation(move,patchWork,moveColor);
-        System.out.println(moves[0].x + moves[0].y + moves[1].x + moves[1].y + patchWork[moves[0].x][moves[0].y].getSymbol());
+       System.out.println(moves[0].x + ", " + moves[0].y +", " + moves[1].x +", " + moves[1].y +", " + patchWork[moves[0].x][moves[0].y].getSymbol() + ", "+patchWork[moves[0].x][moves[0].y].getColorFigure());
         moveColor = moveColor.equals(FigureColors.WHITE) ? FigureColors.BLACK: FigureColors.WHITE;
+
     }
 
 
