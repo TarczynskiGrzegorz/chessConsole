@@ -78,7 +78,11 @@ public class GameController {
         move = GUI.sendInfo();
         System.out.println(move);
         Point[] moves = processor.translateNotation(move,patchWork,moveColor);
-       System.out.println(moves[0].x + ", " + moves[0].y +", " + moves[1].x +", " + moves[1].y +", " + patchWork[moves[0].x][moves[0].y].getSymbol() + ", "+patchWork[moves[0].x][moves[0].y].getColorFigure());
+        if(patchWork[moves[0].x][moves[0].y].checkMove(moveColor, moves[0],moves[1], patchWork)){
+            patchWork[moves[1].x][moves[1].y] = patchWork[moves[0].x][moves[0].y];
+            patchWork[moves[0].x][moves[0].y] = null;
+        }
+//       System.out.println(moves[0].x + ", " + moves[0].y +", " + moves[1].x +", " + moves[1].y +", " + patchWork[moves[0].x][moves[0].y].getSymbol() + ", "+patchWork[moves[0].x][moves[0].y].getColorFigure());
         moveColor = moveColor.equals(FigureColors.WHITE) ? FigureColors.BLACK: FigureColors.WHITE;
 
     }

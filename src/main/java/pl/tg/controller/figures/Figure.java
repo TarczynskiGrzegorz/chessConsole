@@ -25,4 +25,7 @@ public class Figure {
     public Point[] possibleMovesArray(Figure[][] patchwork, int x, int y){
         return null;
     }
+    public boolean checkMove(FigureColors color, Point startPostition, Point finalPosition, Figure[][] patchwork){
+        return true;
+    }
 }
