@@ -3,27 +3,34 @@ package pl.tg.processor;
 import pl.tg.controller.GameController;
 import pl.tg.controller.figures.Figure;
 import pl.tg.controller.figures.FigureColors;
+import pl.tg.controller.figures.Pawn;
 
 import java.awt.*;
 
 public class Processor {
     private GameController gameController;
+    private Figure[][]patchwork;
 
     public void setGameController(GameController gameController) {
         this.gameController = gameController;
+        patchwork = gameController.getPatchWork();
     }
 
     public Point[] translateNotation(String move, Figure[][] patchwork, FigureColors color) {
         char[] moveCharArray = move.toCharArray();
-        Point startPosition = new Point() ;
-        Point finalPosition = new Point();
 
+        Point start = new Point(translateRowName(moveCharArray[1]),translateColumnName(moveCharArray[0]));
+        Point end = new Point(translateRowName(moveCharArray[1]),translateColumnName(moveCharArray[0]));
+        Point[] result = {start,end};
+
+
+//        Point startPosition = new Point() ;
+//        Point finalPosition = new Point(translateColumnName(moveCharArray[0]), translateRowName(moveCharArray[1]));
+//
         switch (moveCharArray.length) {
             case 2:
-                startPosition.x = getRowForPawn(color,moveCharArray[1]);
-                startPosition.y = translateColumnName(moveCharArray[0]);
-                finalPosition.x = Integer.parseInt(String.valueOf(moveCharArray[1]));
-                finalPosition.y = startPosition.y;
+               start.x = getRowForPawn(color,end.x,end.y);
+                       start.y =end.y;
                 break;
             case 3:
                 System.out.println("3");
@@ -31,8 +38,9 @@ public class Processor {
             default:
                 System.out.println("default");
         }
-        Point[] points = {startPosition, finalPosition};
-        return points;
+        return result;
+//        Point[] points = {startPosition, finalPosition};
+//        return points;
     }
 
     private int translateColumnName(char columnName) {
@@ -67,15 +75,25 @@ public class Processor {
         }
         return columnNumber;
     }
-
-    private int getRowForPawn(FigureColors color, char destinationRow) {
-        int result = Integer.parseInt(String.valueOf(destinationRow)) -1;
+private int translateRowName(char rowName){
+    System.out.println(rowName);
+        return Integer.parseInt(String.valueOf(rowName))-1;
+}
+    private int getRowForPawn(FigureColors color, int row, int column) {
         if(color.equals(FigureColors.WHITE)){
-            result--;
+            for(int i=row ;i >=0 ;i--){
+                if(patchwork[i][column]!=null && patchwork[i][column].getSymbol()==Pawn.symbol){
+                    return i;
+                }
+            }
         }else{
-            result++;
+            for(int i=row ;i <patchwork.length ;i++){
+                if(patchwork[i][column]!=null && patchwork[i][column].getSymbol()==Pawn.symbol){
+                    return i;
+                }
+            }
         }
-        return  result;
+        return -1;
     }
 
 }

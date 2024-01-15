@@ -82,9 +82,14 @@ public class GameController {
             patchWork[moves[1].x][moves[1].y] = patchWork[moves[0].x][moves[0].y];
             patchWork[moves[0].x][moves[0].y] = null;
         }
-//       System.out.println(moves[0].x + ", " + moves[0].y +", " + moves[1].x +", " + moves[1].y +", " + patchWork[moves[0].x][moves[0].y].getSymbol() + ", "+patchWork[moves[0].x][moves[0].y].getColorFigure());
+
+//       System.out.println(moves[0].x + ", " + moves[0].y +", " + moves[1].x +", " + moves[1].y +", " + patchWork[moves[0].x][moves[0].y].getSymbol() + ", ");
         moveColor = moveColor.equals(FigureColors.WHITE) ? FigureColors.BLACK: FigureColors.WHITE;
 
+    }
+
+    public Figure[][] getPatchWork(){
+        return patchWork;
     }
 
 

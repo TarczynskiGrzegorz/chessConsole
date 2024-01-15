@@ -3,6 +3,7 @@ package pl.tg.controller.figures;
 import java.awt.*;
 
 public class Pawn extends Figure{
+    public static final char symbol = '*';
     public Pawn(FigureColors figureColor){
         super(figureColor, '*');
     }
