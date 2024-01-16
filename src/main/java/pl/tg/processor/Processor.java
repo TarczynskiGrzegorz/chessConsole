@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class Processor {
     private GameController gameController;
-    private Figure[][]patchwork;
+    private Figure[][] patchwork;
 
     public void setGameController(GameController gameController) {
         this.gameController = gameController;
@@ -19,9 +19,9 @@ public class Processor {
     public Point[] translateNotation(String move, Figure[][] patchwork, FigureColors color) {
         char[] moveCharArray = move.toCharArray();
 
-        Point start = new Point(translateRowName(moveCharArray[1]),translateColumnName(moveCharArray[0]));
-        Point end = new Point(translateRowName(moveCharArray[1]),translateColumnName(moveCharArray[0]));
-        Point[] result = {start,end};
+        Point start = new Point(translateRowName(moveCharArray[1]), translateColumnName(moveCharArray[0]));
+        Point end = new Point(translateRowName(moveCharArray[1]), translateColumnName(moveCharArray[0]));
+        Point[] result = {start, end};
 
 
 //        Point startPosition = new Point() ;
@@ -29,8 +29,8 @@ public class Processor {
 //
         switch (moveCharArray.length) {
             case 2:
-               start.x = getRowForPawn(color,end.x,end.y);
-                       start.y =end.y;
+                start.x = getRowForPawn(color, end.x, end.y);
+                start.y = end.y;
                 break;
             case 3:
                 System.out.println("3");
@@ -75,20 +75,22 @@ public class Processor {
         }
         return columnNumber;
     }
-private int translateRowName(char rowName){
-    System.out.println(rowName);
-        return Integer.parseInt(String.valueOf(rowName))-1;
-}
+
+    private int translateRowName(char rowName) {
+        System.out.println(rowName);
+        return Integer.parseInt(String.valueOf(rowName)) - 1;
+    }
+
     private int getRowForPawn(FigureColors color, int row, int column) {
-        if(color.equals(FigureColors.WHITE)){
-            for(int i=row ;i >=0 ;i--){
-                if(patchwork[i][column]!=null && patchwork[i][column].getSymbol()==Pawn.symbol){
+        if (color.equals(FigureColors.WHITE)) {
+            for (int i = row; i >= 0; i--) {
+                if (patchwork[i][column] != null && patchwork[i][column].getSymbol() == Pawn.symbol && patchwork[i][column].getColorFigure().equals(color)) {
                     return i;
                 }
             }
-        }else{
-            for(int i=row ;i <patchwork.length ;i++){
-                if(patchwork[i][column]!=null && patchwork[i][column].getSymbol()==Pawn.symbol){
+        } else {
+            for (int i = row; i < patchwork.length; i++) {
+                if (patchwork[i][column] != null && patchwork[i][column].getSymbol() == Pawn.symbol && patchwork[i][column].getColorFigure().equals(color)) {
                     return i;
                 }
             }
