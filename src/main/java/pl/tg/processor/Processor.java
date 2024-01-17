@@ -6,6 +6,8 @@ import pl.tg.controller.figures.FigureColors;
 import pl.tg.controller.figures.Pawn;
 
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public class Processor {
     private GameController gameController;
@@ -19,9 +21,9 @@ public class Processor {
     public Point[] translateNotation(String move, Figure[][] patchwork, FigureColors color) {
         char[] moveCharArray = move.toCharArray();
 
-        Point start = new Point(translateRowName(moveCharArray[1]), translateColumnName(moveCharArray[0]));
-        Point end = new Point(translateRowName(moveCharArray[1]), translateColumnName(moveCharArray[0]));
-        Point[] result = {start, end};
+        Point start = new Point(-1,-1);
+        Point end = new Point(-1,-1);
+        int x;
 
 
 //        Point startPosition = new Point() ;
@@ -29,16 +31,19 @@ public class Processor {
 //
         switch (moveCharArray.length) {
             case 2:
-                start.x = getRowForPawn(color, end.x, end.y);
-                start.y = end.y;
-                break;
+                 end = new Point(translateRowName(moveCharArray[moveCharArray.length - 1]), translateColumnName(moveCharArray[moveCharArray.length - 2]));
+                 start = new Point(getRowForPawn(color, end.x, end.y),end.y);
+                Point[] result2 = {start,end};
+                return result2;
             case 3:
-                System.out.println("3");
-                break;
+                 end = new Point(translateRowName(moveCharArray[moveCharArray.length - 1]), translateColumnName(moveCharArray[moveCharArray.length - 2]));
+                 Point[] result3 = {findStartPosition(patchwork, color, end, moveCharArray[0]),end};
+                return result3;
             default:
                 System.out.println("default");
         }
-        return result;
+
+        return null;
 //        Point[] points = {startPosition, finalPosition};
 //        return points;
     }
@@ -97,5 +102,47 @@ public class Processor {
         }
         return -1;
     }
+
+    private Point findStartPosition(Figure[][] patchwork, FigureColors color,Point end, char figureSymbol) {
+        List <Point> possibleStartFigure = possibleFiguresForWhiteArray(patchwork, color, figureSymbol);
+
+        switch (figureSymbol) {
+            case 'I':
+                for (int i =0; i<possibleStartFigure.size() ; i++){
+                    int x =(int) possibleStartFigure.get(i).getX() ;
+                    int y =(int) possibleStartFigure.get(i).getY() ;
+                    if(patchwork[x][y].checkMove(color, possibleStartFigure.get(i), end, patchwork)){
+                        Point result  = new Point((int)possibleStartFigure.get(i).getX(),(int)possibleStartFigure.get(i).getY());
+                        return result;
+                    }
+                }
+                break;
+            case 'S':
+                break;
+            case '^':
+                break;
+            case 'Q':
+                break;
+            case 'K':
+                break;
+        }
+        return null;
+    }
+
+    private List possibleFiguresForWhiteArray(Figure[][] patchwork, FigureColors color, char symbol) {
+        List<Point> result = new ArrayList();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(patchwork[i][j]!= null && patchwork[i][j].getColorFigure().equals(color) && patchwork[i][j].getSymbol()==symbol  ){
+                    result.add(new Point(i,j));
+                }
+            }
+        }
+        for (int i =0 ;i <result.size(); i++){
+            System.out.println(result.get(i).x + "' " +result.get(i).y);
+        }
+        return result;
+    }
+
 
 }
