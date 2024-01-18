@@ -14,13 +14,17 @@ public class GameController {
     private Processor processor;
     private GUI GUI;
     private String move;
-    private FigureColors moveColor = FigureColors.WHITE;
+    private MovePositions movePositions = new MovePositions();
+
 
     public GameController(Processor processor, GUI GUI) {
         this.processor = processor;
         this.GUI = GUI;
     }
 
+    public MovePositions getMovePositions() {
+        return movePositions;
+    }
 
     public void startPosition() {
         patchWork[0][0] = new Rook(FigureColors.WHITE);
@@ -76,15 +80,14 @@ public class GameController {
 
     private void makeMove(){
         move = GUI.sendInfo();
-        System.out.println(move);
-        Point[] moves = processor.translateNotation(move,patchWork,moveColor);
-        if(patchWork[moves[0].x][moves[0].y].checkMove(moveColor, moves[0],moves[1], patchWork)){
-            patchWork[moves[1].x][moves[1].y] = patchWork[moves[0].x][moves[0].y];
-            patchWork[moves[0].x][moves[0].y] = null;
+        processor.translateNotation(move);
+        if(patchWork[movePositions.getStartX()][movePositions.getStartY()].checkMove(movePositions.getColor(), getMovePositions(), patchWork)){
+            patchWork[movePositions.getFinishX()][movePositions.getFinishY()] = patchWork[movePositions.getStartX()][movePositions.getStartY()];
+            patchWork[movePositions.getStartX()][movePositions.getStartY()] = null;
         }
+        movePositions.setColor(movePositions.getColor().equals(FigureColors.WHITE) ? FigureColors.BLACK: FigureColors.WHITE);
 
 //       System.out.println(moves[0].x + ", " + moves[0].y +", " + moves[1].x +", " + moves[1].y +", " + patchWork[moves[0].x][moves[0].y].getSymbol() + ", ");
-        moveColor = moveColor.equals(FigureColors.WHITE) ? FigureColors.BLACK: FigureColors.WHITE;
 
     }
 

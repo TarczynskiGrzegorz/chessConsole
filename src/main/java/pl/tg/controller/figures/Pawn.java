@@ -1,5 +1,7 @@
 package pl.tg.controller.figures;
 
+import pl.tg.controller.MovePositions;
+
 import java.awt.*;
 import java.util.Objects;
 
@@ -13,7 +15,9 @@ public class Pawn extends Figure{
         return points;
     }
 
-    public boolean checkMove(FigureColors color, Point startPostition, Point finalPosition, Figure[][] patchwork){
+    public boolean checkMove(FigureColors color, MovePositions movePositions, Figure[][] patchwork){
+        Point startPostition =new Point( movePositions.getStartX(),movePositions.getStartY());
+        Point finalPosition =new Point( movePositions.getFinishX(),movePositions.getFinishY());
         return isPossibleMoveForward(color,startPostition,finalPosition, patchwork) || isPossibleMoveDiagonal(color,startPostition,finalPosition, patchwork);
     }
     private boolean isPossibleMoveForward (FigureColors color, Point startPostition, Point finalPosition, Figure[][] patchwork){

@@ -1,5 +1,7 @@
 package pl.tg.controller.figures;
 
+import pl.tg.controller.MovePositions;
+
 import java.awt.*;
 
 public class Figure {
@@ -35,7 +37,7 @@ public class Figure {
     public Point[] possibleMovesArray(Figure[][] patchwork, int x, int y){
         return null;
     }
-    public boolean checkMove(FigureColors color, Point startPostition, Point finalPosition, Figure[][] patchwork){
+    public boolean checkMove(FigureColors color, MovePositions movePositions, Figure[][] patchwork){
         return true;
     }
 
