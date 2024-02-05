@@ -106,7 +106,7 @@ public class Processor {
         List<Point> possibleStartFigure = possibleFiguresForWhiteArray(figureSymbol);
 
         switch (figureSymbol) {
-            case 'I':
+            case '♖':
                 for (int i = 0; i < possibleStartFigure.size(); i++) {
                     int x = (int) possibleStartFigure.get(i).getX();
                     int y = (int) possibleStartFigure.get(i).getY();

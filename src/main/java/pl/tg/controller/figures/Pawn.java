@@ -6,9 +6,9 @@ import java.awt.*;
 import java.util.Objects;
 
 public class Pawn extends Figure{
-    public static final char symbol = '*';
+    public static final char symbol = '♙';
     public Pawn(FigureColors figureColor){
-        super(figureColor, '*');
+        super(figureColor, '♙');
     }
     public Point[] possibleMovesArray(Figure[][] patchwork, int x, int y){
         Point[] points = {new Point(6,7)};

@@ -7,7 +7,7 @@ import java.awt.*;
 public class Rook extends Figure{
 
     public Rook(FigureColors figureColor){
-        super(figureColor, 'I');
+        super(figureColor, '♖');
 
     }
     public boolean checkMove(FigureColors color, MovePositions movePositions, Figure[][] patchwork){
