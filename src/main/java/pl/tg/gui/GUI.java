@@ -46,7 +46,7 @@ public class GUI {
                         backgroundIndex++;
                     }
                     System.out.print(patchWork[i][j].getColorFigure().equals(FigureColors.BLACK) ? PatchWorkColors.BLACK_BOLD: PatchWorkColors.WHITE_BOLD );
-                    System.out.print(" "+ patchWork[i][j].getSymbol()+ " ");
+                    System.out.print(" "+ patchWork[i][j].getDisplaySymbol()+ " ");
                     System.out.print(PatchWorkColors.RESET);
                 }
             }

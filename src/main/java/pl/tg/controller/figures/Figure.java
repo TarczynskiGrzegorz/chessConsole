@@ -8,11 +8,22 @@ public class Figure {
 
     private FigureColors colorFigure;
     private char symbol;
+    private char displaySymbol;
+
+    public char getDisplaySymbol() {
+        return displaySymbol;
+    }
+
+    public void setDisplaySymbol(char displaySymbol) {
+        this.displaySymbol = displaySymbol;
+    }
+
     private boolean firstMove =true;
 
-    public Figure(FigureColors colorFigure, char symbol){
+    public Figure(FigureColors colorFigure, char symbol, char displaySymbol){
         this.colorFigure = colorFigure;
         this.symbol = symbol;
+        this.displaySymbol =displaySymbol;
     }
     public void move(){
 

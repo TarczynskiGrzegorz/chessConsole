@@ -31,17 +31,18 @@ public class Processor {
 //        Point startPosition = new Point() ;
 //        Point finalPosition = new Point(translateColumnName(moveCharArray[0]), translateRowName(moveCharArray[1]));
 //
-        switch (moveCharArray.length) {
-            case 2:
+        switch ( typeOfMovement(move)) {
+            case "movePawn":
                 movePositions.setFinishX(translateRowName(moveCharArray[moveCharArray.length - 1]));
                 movePositions.setFinishY(translateColumnName(moveCharArray[moveCharArray.length - 2]));
                 movePositions.setStartX(getRowForPawn(translateRowName(moveCharArray[moveCharArray.length - 1]), translateColumnName(moveCharArray[moveCharArray.length - 2])));
                 movePositions.setStartY(movePositions.getFinishY());
                 break;
-            case 3:
+            case "moveFigure":
                 movePositions.setFinishX(translateRowName(moveCharArray[moveCharArray.length - 1]));
                 movePositions.setFinishY(translateColumnName(moveCharArray[moveCharArray.length - 2]));
                 findStartPosition(moveCharArray[0]);
+                break;
             default:
                 System.out.println("default");
         }
@@ -109,7 +110,7 @@ public class Processor {
         List<Point> possibleStartFigure = possibleFiguresForWhiteArray(figureSymbol);
 
         switch (figureSymbol) {
-            case '♖':
+            case 'R':
                 for (int i = 0; i < possibleStartFigure.size(); i++) {
                     int x = (int) possibleStartFigure.get(i).getX();
                     int y = (int) possibleStartFigure.get(i).getY();
@@ -148,7 +149,7 @@ public class Processor {
         return result;
     }
 
-    private String typeOfMovement(String str){
+    private static String typeOfMovement(String str){
         String figuresName ="[KQRBP]";
         String columnsName ="[a-h]";
         String rowsName = "[1-8]";
@@ -163,14 +164,14 @@ public class Processor {
         typeMoves.put("castlingKingside","O-O");
         typeMoves.put("castlingQueenside","O-O-O");
 
-    for(Map.Entry<String,String> entry: typeMoves.entrySet()){
+        for(Map.Entry<String,String> entry: typeMoves.entrySet()){
             Pattern pattern = Pattern.compile(entry.getValue());
             Matcher matcher = pattern.matcher(str);
             if(matcher.matches()){
                 return entry.getKey();
             }
-    }
-    return "default";
+        }
+        return "default";
 
     }
 }

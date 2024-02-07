@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class King extends Figure{
     public King(FigureColors figureColor){
-        super(figureColor, '♚');
+        super(figureColor, 'K','♚');
     }
 
     public Point[] possibleMovesArray(Figure[][] patchwork, int x, int y){
