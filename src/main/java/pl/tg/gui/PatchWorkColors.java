@@ -8,9 +8,9 @@ public class PatchWorkColors {
     public static final String WHITE = "\033[0;37m";
 
     public static final String BLACK_BOLD = "\033[1;30m";
-    public static final String WHITE_BOLD = "\033[1;37m";
+    public static final String WHITE_BOLD = "\033[1;38m";
 
-    public static final String YELLOW_BACKGROUND_BRIGHT = "\033[0;103m";
+    public static final String YELLOW_BACKGROUND_BRIGHT = "\033[0;108m";
     public static final String YELLOW_BACKGROUND_DARK = "\033[0;43m";
 }
 
