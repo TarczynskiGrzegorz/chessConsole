@@ -109,8 +109,7 @@ public class Processor {
     private void findStartPosition(char figureSymbol) {
         List<Point> possibleStartFigure = possibleFiguresForWhiteArray(figureSymbol);
 
-        switch (figureSymbol) {
-            case 'R':
+
                 for (int i = 0; i < possibleStartFigure.size(); i++) {
                     int x = (int) possibleStartFigure.get(i).getX();
                     int y = (int) possibleStartFigure.get(i).getY();
@@ -121,16 +120,7 @@ public class Processor {
                         break;
                     }
                 }
-                break;
-            case 'S':
-                break;
-            case '^':
-                break;
-            case 'Q':
-                break;
-            case 'K':
-                break;
-        }
+
 
     }
 
