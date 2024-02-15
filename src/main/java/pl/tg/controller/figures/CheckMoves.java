@@ -14,7 +14,6 @@ public interface CheckMoves {
                return false;
            }
        }
-       System.out.println("w tablicy");
        return true;
    }
 }
