@@ -81,13 +81,13 @@ public class GameController {
     private void makeMove(){
         move = GUI.sendInfo();
         processor.translateNotation(move);
+
         if(patchWork[movePositions.getStartX()][movePositions.getStartY()].checkMove(movePositions.getColor(), getMovePositions(), patchWork)){
             patchWork[movePositions.getFinishX()][movePositions.getFinishY()] = patchWork[movePositions.getStartX()][movePositions.getStartY()];
             patchWork[movePositions.getStartX()][movePositions.getStartY()] = null;
         }
         movePositions.setColor(movePositions.getColor().equals(FigureColors.WHITE) ? FigureColors.BLACK: FigureColors.WHITE);
 
-//       System.out.println(moves[0].x + ", " + moves[0].y +", " + moves[1].x +", " + moves[1].y +", " + patchWork[moves[0].x][moves[0].y].getSymbol() + ", ");
 
     }
 

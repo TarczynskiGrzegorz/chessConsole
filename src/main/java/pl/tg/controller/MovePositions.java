@@ -62,4 +62,9 @@ public class MovePositions {
     public void setFinishY(int finishY) {
         this.finishY = finishY;
     }
+
+    @Override
+    public String toString() {
+        return "[" + startX + ", " + startY + "]" + "[" + finishX + ", " + finishY + "]";
+    }
 }

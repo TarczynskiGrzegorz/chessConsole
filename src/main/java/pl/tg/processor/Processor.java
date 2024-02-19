@@ -108,8 +108,7 @@ public class Processor {
 
     private void findStartPosition(char figureSymbol) {
         List<Point> possibleStartFigure = possibleFiguresForWhiteArray(figureSymbol);
-
-
+        System.out.println(movePositions.toString());
                 for (int i = 0; i < possibleStartFigure.size(); i++) {
                     int x = (int) possibleStartFigure.get(i).getX();
                     int y = (int) possibleStartFigure.get(i).getY();
@@ -120,6 +119,7 @@ public class Processor {
                         break;
                     }
                 }
+        System.out.println(movePositions.toString());
 
 
     }
@@ -133,12 +133,16 @@ public class Processor {
                 }
             }
         }
-
+        Iterator<Point> it = result.iterator();
+        while (it.hasNext()){
+            Point pt = it.next();
+            System.out.println(pt.getX() + " : " +  pt.getY());
+        }
         return result;
     }
 
     private static String typeOfMovement(String str){
-        String figuresName ="[KQRBP]";
+        String figuresName ="[KQRBPN]";
         String columnsName ="[a-h]";
         String rowsName = "[1-8]";
         Map<String,String> typeMoves = new HashMap<>();
