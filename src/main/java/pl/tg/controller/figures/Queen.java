@@ -10,7 +10,9 @@ public class Queen extends Figure implements CheckMoves {
 
 
     public boolean checkMove(FigureColors color, MovePositions movePositions, Figure[][] patchwork) {
-        System.out.println(isInPatchwork(movePositions) && !isFinalPositionReservedByAliance(color, movePositions, patchwork) && !isAnythingBetween(movePositions,patchwork));
+        boolean isIn  = isInPatchwork(movePositions);
+        boolean isNotFinalByAliance =!isFinalPositionReservedByAliance(color, movePositions, patchwork);
+        boolean isFreeWay =!isAnythingBetween(movePositions,patchwork);
         return isInPatchwork(movePositions) && !isFinalPositionReservedByAliance(color, movePositions, patchwork) && !isAnythingBetween(movePositions,patchwork);
     }
 

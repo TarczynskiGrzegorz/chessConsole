@@ -36,10 +36,10 @@ public interface CheckMoves {
             for (int i = start + 1; i < finish; i++) {
                 if (patchwork[movePositions.getStartX()][i] != null) {
                     System.out.println("przeszkoda");
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         } else if (movePositions.getStartY() == movePositions.getFinishY()) {
             if (movePositions.getStartX() < movePositions.getFinishX()) {
                 start = movePositions.getStartX();
@@ -51,10 +51,10 @@ public interface CheckMoves {
             for (int i = start + 1; i < finish; i++) {
                 if (patchwork[i][movePositions.getStartY()] != null) {
                     System.out.println("przeszkoda");
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         } else return false;
 
     }

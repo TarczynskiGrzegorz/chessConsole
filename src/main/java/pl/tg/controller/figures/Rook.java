@@ -13,7 +13,7 @@ public class Rook extends Figure implements CheckMoves {
 
     public boolean checkMove(FigureColors color, MovePositions movePositions, Figure[][] patchwork) {
 
-        return !isFinalPositionReservedByAliance(color, movePositions, patchwork) && (movePositions.getStartX() == movePositions.getFinishX() || movePositions.getStartY() == movePositions.getFinishY()) && isAnythingBeetwenInLine(movePositions,patchwork);
+        return !isFinalPositionReservedByAliance(color, movePositions, patchwork) && (movePositions.getStartX() == movePositions.getFinishX() || movePositions.getStartY() == movePositions.getFinishY()) && !isAnythingBeetwenInLine(movePositions,patchwork);
     }
 
 
