@@ -38,7 +38,12 @@ public class Figure {
     }
 
     public boolean isFirstMove() {
-        return firstMove;
+        if(firstMove){
+            setFirstMove(false);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void setFirstMove(boolean firstMove) {
