@@ -43,6 +43,21 @@ public class Processor {
                 movePositions.setFinishY(translateColumnName(moveCharArray[moveCharArray.length - 2]));
                 findStartPosition(moveCharArray[0]);
                 break;
+            case "castlingKingside":
+                if(movePositions.getColor().equals(FigureColors.WHITE)){
+                    if(patchwork[0][4].isFirstMove() && patchwork[0][5]==null &&patchwork[0][6] ==null && patchwork[0][7].isFirstMove()){
+                        movePositions.setCastlingKingsideWhite(true);
+                        movePositions.setCastling(true);
+                    }
+                }else{
+                    if(patchwork[7][4].isFirstMove() && patchwork[7][5]==null &&patchwork[7][6] ==null && patchwork[7][7].isFirstMove()){
+                        movePositions.setCastlingKingsideBlack(true);
+                        movePositions.setCastling(true);
+                    }
+                }
+                break;
+            case "castlingQueenside":
+                break;
             default:
                 System.out.println("default");
         }

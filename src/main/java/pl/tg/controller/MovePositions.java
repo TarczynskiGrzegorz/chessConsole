@@ -8,7 +8,53 @@ public class MovePositions {
     private int startY=-1;
     private int finishX=-1;
     private int finishY=-1;
+    private boolean castling = false;
 
+    public boolean isCastling() {
+        return castling;
+    }
+
+    public void setCastling(boolean castling) {
+        this.castling = castling;
+    }
+
+    private boolean castlingKingsideWhite = false;
+    private boolean castlingKingsideBlack= false;
+    private boolean castlingQueenSideWhite = false;
+
+    public boolean isCastlingKingsideWhite() {
+        return castlingKingsideWhite;
+    }
+
+    public void setCastlingKingsideWhite(boolean castlingKingsideWhite) {
+        this.castlingKingsideWhite = castlingKingsideWhite;
+    }
+
+    public boolean isCastlingKingsideBlack() {
+        return castlingKingsideBlack;
+    }
+
+    public void setCastlingKingsideBlack(boolean castlingKingsideBlack) {
+        this.castlingKingsideBlack = castlingKingsideBlack;
+    }
+
+    public boolean isCastlingQueenSideWhite() {
+        return castlingQueenSideWhite;
+    }
+
+    public void setCastlingQueenSideWhite(boolean castlingQueenSideWhite) {
+        this.castlingQueenSideWhite = castlingQueenSideWhite;
+    }
+
+    public boolean isCastlingQueenSideBlack() {
+        return castlingQueenSideBlack;
+    }
+
+    public void setCastlingQueenSideBlack(boolean castlingQueenSideBlack) {
+        this.castlingQueenSideBlack = castlingQueenSideBlack;
+    }
+
+    private boolean castlingQueenSideBlack= false;
     private FigureColors color = FigureColors.WHITE;
 
     public MovePositions(int startX, int startY, int finishX, int finishY, FigureColors color) {
