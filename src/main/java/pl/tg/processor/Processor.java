@@ -57,6 +57,17 @@ public class Processor {
                 }
                 break;
             case "castlingQueenside":
+                if(movePositions.getColor().equals(FigureColors.WHITE)){
+                    if(patchwork[0][0].isFirstMove() && patchwork[0][1]==null &&patchwork[0][2] ==null&&patchwork[0][3] ==null && patchwork[0][4].isFirstMove()){
+                        movePositions.setCastlingQueenSideWhite(true);
+                        movePositions.setCastling(true);
+                    }
+                }else{
+                    if(patchwork[7][0].isFirstMove() && patchwork[7][1]==null &&patchwork[7][2] ==null&&patchwork[7][3] ==null && patchwork[7][4].isFirstMove()){
+                        movePositions.setCastlingQueenSideBlack(true);
+                        movePositions.setCastling(true);
+                    }
+                }
                 break;
             default:
                 System.out.println("default");
